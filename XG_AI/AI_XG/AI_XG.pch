@@ -1,0 +1,154 @@
+//
+//  AI_XG.pch
+//  AI_XG
+//
+//  Created by 小马哥 on 2018/1/24.
+//  Copyright © 2018年 小马哥. All rights reserved.
+//
+
+#ifndef AI_XG_pch
+#define AI_XG_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef DEBUG
+#define XMGLog(...) NSLog(__VA_ARGS__)
+#define IsDebug YES
+#else
+#define XMGLog(...)
+#define IsDebug NO
+#endif
+
+///itunes connect
+#warning here app key
+#define AppId  @"1095948109"
+
+///谷歌广告 正式id
+#define AdMobId  @"ca-app-pub-3370442864980896~7200670155"
+///banner
+#define PWBannerAd @"ca-app-pub-3370442864980896/4473777926"
+#define PWDetailAd @"ca-app-pub-3370442864980896/8214546537"
+///插页
+#define FullPageAd @"ca-app-pub-3370442864980896/6350800527"
+
+
+
+///banner测试id
+#define textId @"ca-app-pub-3940256099942544/2934735716"
+///插页测试id
+#define chaPageId @"ca-app-pub-3940256099942544/4411468910"
+
+///主色调
+#define Main_Color COLOR_HEX(@"#f4a85e")
+#define Icon_Color COLOR_HEX(@"#f4a85e")
+
+#define Border_Color COLOR_HEX(@"#AAAAAA")
+#define Line_Color COLOR_HEX(@"#DBDBDB")
+
+#define Screen_Scale [UIScreen mainScreen].scale
+
+#define Encrypt_Iv     @"16-Bytes--String"
+#define Encode_key     @"e10adc3949ba59abbe56e057f20f883e"
+
+#warning here key and 分享urlScheme
+#define UM_AppKey      @"59bf8f363eae253acb000012"
+#define WeChat_AppKey  @"wx9951ca924b93ffb3"
+#define WeChat_Secret  @"0a30ffdb2c4889370fd98b8588438db1"
+#define RedirectURL    @"https://www.baidu.com"
+#define QQ_AppKey      @"1106477324"
+#define Sina_AppKey    @"817963434"
+#define Sina_Secret    @"16f4f82d1808b42c84d5db8631b80d9e"
+#define UM_Push_Secret @"jwmmrr6yxinkqjjurtvpmbkluw7wlaiy"
+#define Bugly_Key      @"aae94e42c8"
+
+/*平台     |   格式                      |  举例                 |  备注
+微信       |   微信appKey                |  wxdc1e388c3822c80b  |
+QQ/Qzone  |   需要添加两项URL Scheme：    |  如appID：100424468   |  QQ05fc5b14为100424468转十六进制而来，
+          |  1、"tencent"+腾讯QQ互联     |  1、tencent100424468  |  因不足8位向前补0，然后加"QQ"前缀
+          |  应用appID                  |  2、QQ05fc5b14        |
+          |  2、“QQ”+腾讯QQ互联应用appID  |                       |
+          |  转换成十六进制（不足8位前面补0）|                       |
+新浪微博   |  “wb”+新浪appKey             | wb3921700954          |
+支付宝     |   “ap”+appID                |   ap2015111700822536  | URL Type中的identifier填"alipayShare"
+ 
+ /*
+ CGFloat height = ScreenHeight - 64;
+ if (iPhoneX)
+ {
+ height = ScreenHeight - 88 - 34;
+ }
+ self.contentSize = CGSizeMake(0, height + 0.3);
+ */
+
+///是否有锁
+#define isLocked ([[[NSUserDefaults standardUserDefaults] objectForKey:@"idLock"] boolValue] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"pwLock"] boolValue])
+
+///解锁密码
+#define lockPW [[NSUserDefaults standardUserDefaults] objectForKey:@"lockPW"]
+
+
+
+#define nowTimestamp [[NSDate date] timeIntervalSince1970] + [[NSTimeZone systemTimeZone] secondsFromGMTForDate:[NSDate date]]
+
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define BubbleWidth  ScreenWidth * 3 / 4 
+#define BingImgWidth ScreenHeight * 1080 / 1920
+
+#define iPhoneX (StatusBarHeight == 44) ? YES : NO
+#define iPhone5 (ScreenHeight == 568 && ScreenWidth == 320) ? YES : NO
+#define iPhone6 (ScreenHeight == 667 && ScreenWidth == 375) ? YES : NO
+
+#define StatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height
+#define BottomSafeArea  ((StatusBarHeight > 20) ? 34 : 0)
+
+
+
+#define UUID [[UIDevice currentDevice].identifierForVendor UUIDString]
+#define App_Name [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleDisplayName"]
+#define App_Build [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleVersion"]
+#define App_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define App_IconArray [[NSBundle mainBundle] infoDictionary][@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"]
+
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import "SDAutoLayout.h"
+#import "UIColor+XMGColor.h"
+#import "UIAlertView+Delay.h"
+#import "UIAlertController+Delay.h"
+#import "MBProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "NSObject+XMGReviewNull.h"
+#import "UINavigationController+XMG.h"
+#import "XGNavigationController.h"
+#import "MBProgressHUD+XMG.h"
+#import "XMGActionSheet.h"
+#import "NSString+tool.h"
+#import "XMGSingleton.h"
+#import "FMDB_Tool.h"
+
+
+#import "NSString+urlEncode.h"
+#import "NSString+Base64.h"
+#import "NSString+MD5.h"
+#import "XGLabel.h"
+#import "XGDataRequest.h"
+
+
+/*  更新LeanCloud首页轮播图数据
+    NSArray * data = @[@{@"ad_imageUrl":@"https://www.baidu.com/img/bd_logo1.png", @"ad_jumpUrl":@"https://www.baidu.com", @"ad_title":@"百度图片获取自百度"}, @{@"ad_imageUrl":@"https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=381416698,1952604894&fm=85&s=86D5836697B3C77E44323E530300C0B9", @"ad_jumpUrl":@"itms-apps://itunes.apple.com/cn/app/id1095948109?mt=8", @"ad_title":@"金融微店app"}, @{@"ad_imageUrl":@"https://www.baidu.com/img/bd_logo1.png", @"ad_jumpUrl":@"https://www.baidu.com", @"ad_title":@"百度图片获取自百度"}];
+    AVObject * object = [AVObject objectWithClassName:@"adversitiment"];
+    [object setObject:data forKey:@"ad_scrollData"];
+    [object setObject:App_Version forKey:@"App_Version"];
+    [object setObject:App_Build forKey:@"App_Build"];
+    [object setObject:[[UIDevice currentDevice] systemVersion] forKey:@"systemVersion"];
+    [object setObject:[NSString phoneType] forKey:@"Phone_Type"];
+
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    
+        [UIAlertView showAlertMessage:@"感谢你的反馈，祝你生活愉快↖(^ω^)↗" andDelay:1.0f];
+    
+    }];*/
+
+
+#endif /* AI_XG_pch */
